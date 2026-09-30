@@ -38,7 +38,7 @@
       const who = e.public ? e.name : "一位同事";
       li.innerHTML =
         '<span class="date">' + e.date + "</span>" +
-        '<span class="what"><strong>' + who + "捐了纸钱</strong>" +
+        '<span class="what"><strong>' + who + "请全办公室吃纸</strong>" +
         '<span class="meta"><span>' + (e.note || "爱心不分大小") + "</span></span></span>" +
         '<span class="amt amt--in">+' + money(e.amount) + "</span>";
     } else {
