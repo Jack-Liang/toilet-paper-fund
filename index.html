@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>周公子纸巾基金会 · 扫码捐纸 · 账目公示</title>
+  <meta name="description" content="办公室卫生间不供纸？本基金众筹买纸：只在电商下单，每笔订单截图上墙，账目精确到分。周公子请您上厕所啦。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='52' rx='42' ry='42' fill='%23f5c94c' stroke='%23211f1c' stroke-width='6'/%3E%3Cellipse cx='50' cy='52' rx='10' ry='5' fill='%23efe6cf' stroke='%23211f1c' stroke-width='5'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="visually-hidden" href="#main">跳到正文</a>
+
+  <aside class="nav-chip">
+    <a class="nav-chip__mark" href="#main">周公子纸巾基金会</a>
+    <a class="btn btn--sm btn--outline" href="#donate">捐个纸</a>
+  </aside>
+
+  <main id="main">
+    <!-- 英雄区：大数字 + 标语 + 吉祥物 -->
+    <header class="section hero">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="mono-label">周公子纸巾基金会 · FUND NO.001 · 账目全公开</p>
+          <p class="figure-line">
+            <span class="figure" id="stat-rolls">0</span><span class="figure-unit">卷</span>
+          </p>
+          <h1>周公子请您<br />上厕所啦！</h1>
+          <p class="hero__qualifier">
+            办公室卫生间不供纸。本基金<em>自愿捐助、随喜随缘</em>：只在电商下单，每笔订单截图上墙，账目精确到分。上面的数字，就是基金已经请办公室吃掉的纸。
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--lg" data-burst href="#donate">捐个纸</a>
+            <a class="btn btn--outline" href="#ledger">先查账本</a>
+          </div>
+        </div>
+        <figure class="hero__art roll-wrap" aria-hidden="false">
+          <svg class="roll" viewBox="0 0 240 280" role="img" aria-label="一卷长了脸的厕纸，正深情凝视着你">
+            <!-- 垂下的纸页（撕口） -->
+            <path class="roll__paper" d="M156 96 v106 l7 9 7 -11 7 11 7 -9 6 8 v-114 z" />
+            <!-- 卷筒主体 -->
+            <path class="roll__paper" d="M40 78 v88 a80 28 0 0 0 160 0 v-88" />
+            <ellipse class="roll__paper" cx="120" cy="78" rx="80" ry="28" />
+            <ellipse class="roll__tube" cx="120" cy="78" rx="18" ry="7" />
+            <!-- 脸 -->
+            <ellipse class="roll__eye roll__eye--l" cx="95" cy="120" rx="5" ry="7" />
+            <ellipse class="roll__eye roll__eye--r" cx="145" cy="120" rx="5" ry="7" />
+            <path class="roll__mouth" d="M104 142 Q120 154 136 142" />
+            <ellipse class="roll__blush" cx="80" cy="134" rx="9" ry="5" />
+            <ellipse class="roll__blush" cx="160" cy="134" rx="9" ry="5" />
+            <!-- 爱心 -->
+            <path class="roll__heart" d="M66 46 c-3.5 -7 -14 -4.5 -14 2.5 0 5.5 8 10 14 13.5 6 -3.5 14 -8 14 -13.5 0 -7 -10.5 -9.5 -14 -2.5 z" />
+          </svg>
+          <figcaption class="visually-hidden">基金的吉祥物：一卷有脸的厕纸</figcaption>
+        </figure>
+      </div>
+      <ul class="hero__stats">
+        <li><span class="num" id="stat-in">¥0.00</span><span class="cap">累计爱心款</span></li>
+        <li><span class="num" id="stat-donors">0 笔</span><span class="cap">捐款笔数</span></li>
+        <li><span class="num" id="stat-stock">0 卷</span><span class="cap">当前库存</span></li>
+        <li><span class="num" id="stat-days">—</span><span class="cap">按当前扯法还能撑</span></li>
+      </ul>
+    </header>
+
+    <!-- 怎么玩 -->
+    <section id="how" class="section section--band section--band-pear">
+      <div class="section__inner">
+        <header class="head-hang reveal">
+          <h2>怎么玩？</h2>
+          <p class="head-sub">四步。比「等行政采购」少等二百多个工作日。</p>
+        </header>
+        <ol class="steps">
+          <li>
+            <span class="stage">01 · 扫码进来</span>
+            <h3>你已经完成了。</h3>
+            <p>页面都刷出来了，说明你不仅扫了码，还识货。</p>
+          </li>
+          <li>
+            <span class="stage">02 · 随喜捐纸</span>
+            <h3>扫码进小荷包，金额随意。</h3>
+            <p>一块是心意，五块是一卷，二十是一提。完全自愿，不捐也照样安心扯纸——这是基金会的体面。</p>
+          </li>
+          <li>
+            <span class="stage">03 · 主理人下单</span>
+            <h3>结余低于一提就补货。</h3>
+            <p>主理人收到后统一在电商平台下单，只买纸，不买别的。</p>
+          </li>
+          <li>
+            <span class="stage">04 · 小票上墙</span>
+            <h3>订单截图挂进账本。</h3>
+            <p>谁捐的、买了啥、花在哪，一条不落。然后你就可以安心扯纸了。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 捐个纸 -->
+    <section id="donate" class="section">
+      <header class="head-hang reveal">
+        <h2>捐个纸</h2>
+        <p class="head-sub">自愿捐献，不搞摊派。用支付宝扫码加入「周公子纸巾基金会」小荷包，随喜一笔——主理人收到后统一买纸，订单截图全部公示。</p>
+      </header>
+      <div class="donate-grid donate-grid--single">
+        <article class="qr-card qr-card--alipay">
+          <h3>支付宝 · 小荷包</h3>
+          <img class="qr-card__img" id="qr-xiaohebao" src="assets/qr-xiaohebao.png" alt="支付宝小荷包邀请二维码，扫码加入" width="220" height="220" />
+          <p class="qr-card__cap" data-real="支付宝扫一扫 · 加入小荷包随喜一笔；小荷包里的流水和这本账，互为对账">示意码 · 上线前请替换为小荷包邀请二维码</p>
+        </article>
+      </div>
+      <p class="donate-promise">主理人承诺：收到的每一笔都变成纸。小荷包到账 → 电商下单 → 订单截图挂进下方账本，三步都留痕。</p>
+      <ul class="amounts" aria-label="捐款金额参考">
+        <li>¥1 · 畅快一次</li>
+        <li>¥5 · 一卷自由</li>
+        <li>¥20 · 一提安心</li>
+        <li>¥88 · 荣誉终身纸事</li>
+      </ul>
+    </section>
+
+    <!-- 账本公示 -->
+    <section id="ledger" class="section">
+      <header class="head-hang reveal">
+        <h2>账本公示</h2>
+        <p class="head-sub">每一笔进出的钱，都在这里。支出条目点「去京东看单」等链接，直接唤起下单的 App。</p>
+      </header>
+      <p class="demo-banner" id="demo-banner" hidden>示例数据 · 正式启用前请在 ledger.js 录入真实账目，并把 demo 改为 false</p>
+      <ol class="pledges">
+        <li>
+          <h3><span class="num">01</span>只买纸</h3>
+          <p>专款专用。基金的全部用途是买厕纸，目前没有拓展品类的计划。</p>
+        </li>
+        <li>
+          <h3><span class="num">02</span>只走电商</h3>
+          <p>所有采购在电商平台完成，订单截图与链接全部公示。为什么？因为订单截图自己会说话。</p>
+        </li>
+        <li>
+          <h3><span class="num">03</span>全员可查</h3>
+          <p>账本每周更新，结余精确到分。有疑问，拿账本对，别拿感觉对。</p>
+        </li>
+      </ol>
+      <div class="ledger-summary">
+        <span class="sum"><span class="dot dot--in" aria-hidden="true"></span>已筹 <strong id="sum-in">¥0.00</strong></span>
+        <span class="sum"><span class="dot dot--out" aria-hidden="true"></span>已支出 <strong id="sum-out">¥0.00</strong></span>
+        <span class="sum"><span class="dot dot--balance" aria-hidden="true"></span>结余 <strong id="sum-balance">¥0.00</strong></span>
+      </div>
+      <ol class="ledger" id="ledger-rows"></ol>
+      <p class="ledger-note"><span id="ledger-updated"></span> · 捐款纯属自愿。想匿名？备注里写「匿名」即可。</p>
+      <p class="aside-deadpan">问：为什么用小荷包？答：进账有流水，买纸有订单，两本账对不上的时候，一定是纸先出的问题。</p>
+    </section>
+
+    <!-- 感谢榜 -->
+    <section id="wall" class="section section--band section--band-cyan wall">
+      <div class="section__inner">
+        <header class="head-hang reveal">
+          <h2>感谢榜</h2>
+          <p class="head-sub">无论多少，名单就在这里，按累计金额排序。</p>
+        </header>
+        <ul id="wall-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot-marquee">
+    <div class="foot-marquee__track" aria-hidden="true">
+      <span>周公子请您上厕所啦 · 扯纸请节约 · 捐纸请扫码 · 账目精确到分 · </span>
+      <span>周公子请您上厕所啦 · 扯纸请节约 · 捐纸请扫码 · 账目精确到分 · </span>
+    </div>
+    <p class="visually-hidden">周公子纸巾基金会 · 由同事众筹驱动 · 扯纸请节约</p>
+  </footer>
+
+  <script src="ledger.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

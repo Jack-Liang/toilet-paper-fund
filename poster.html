@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>海报 · 周公子请您上厕所啦</title>
+  <style>
+    @import url("tokens.css");
+
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--color-paper-3);
+      font-family: var(--font-body);
+      color: var(--color-ink);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .print-tip {
+      max-width: 210mm; margin: 1rem auto; padding: 0.75rem 1rem;
+      font-size: 13px; color: var(--color-ink-2);
+      border: 1px dashed var(--color-rule); border-radius: var(--radius-input);
+    }
+    .poster {
+      width: 210mm; height: 296mm;
+      margin: 0 auto 2rem; padding: 14mm 16mm;
+      background: var(--color-paper);
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-card);
+      position: relative; overflow: hidden;
+    }
+    .poster .mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-2); }
+    .poster__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--color-ink); padding-bottom: 4mm; }
+    .poster h1 {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 17.5mm; line-height: 1.12; letter-spacing: -0.02em;
+      margin: 10mm 0 0; overflow-wrap: anywhere;
+    }
+    .poster h1 em {
+      font-style: normal; color: inherit;
+      background-image: linear-gradient(var(--hl-coral) 0 0);
+      background-repeat: no-repeat; background-size: 100% 0.16em; background-position: 0 86%;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    .poster__sub { margin-top: 5mm; font-size: 5.2mm; line-height: 1.6; color: var(--color-ink-2); max-width: 150mm; }
+    .poster__qr {
+      margin-top: 10mm; align-self: center;
+      display: grid; justify-items: center; gap: 4mm;
+      padding: 8mm 12mm; border: 2px solid var(--color-ink); border-radius: 8mm;
+      background: color-mix(in oklch, var(--color-accent) 14%, var(--color-paper));
+    }
+    .poster__qr img { width: 62mm; height: 62mm; }
+    .poster__qr strong { font-family: var(--font-display); font-size: 6mm; font-weight: 700; }
+    .poster__qr span { font-family: var(--font-mono); font-size: 3.6mm; color: var(--color-ink-2); }
+    .poster__amounts { display: flex; flex-wrap: wrap; gap: 2.5mm; margin-top: 9mm; justify-content: center; }
+    .poster__amounts span {
+      font-family: var(--font-mono); font-size: 3.8mm;
+      padding: 1.6mm 4.5mm; border-radius: 999px;
+      border: 1px solid var(--color-rule); background: var(--color-paper-2);
+    }
+    .poster__foot {
+      margin-top: auto; border-top: 2px dashed var(--color-rule);
+      padding-top: 4mm; display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm;
+    }
+    .poster__foot .slogans { font-size: 4.2mm; line-height: 1.7; color: var(--color-ink-2); }
+    .poster__foot .slogans strong { color: var(--color-ink); }
+    .poster__roll { width: 34mm; flex: none; }
+    .poster__roll .roll__paper { fill: var(--color-roll); stroke: var(--color-ink); stroke-width: 3; }
+    .poster__roll .roll__tube { fill: var(--color-paper-3); stroke: var(--color-ink); stroke-width: 3; }
+    .poster__roll .roll__eye { fill: var(--color-ink); }
+    .poster__roll .roll__mouth { fill: none; stroke: var(--color-ink); stroke-width: 3; stroke-linecap: round; }
+    .poster__roll .roll__blush { fill: var(--color-accent-3); opacity: 0.35; }
+    .poster__roll .roll__heart { fill: var(--color-accent); stroke: var(--color-ink); stroke-width: 2.5; }
+
+    @media print {
+      body { background: none; }
+      .print-tip { display: none; }
+      .poster { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <p class="print-tip">
+    打印方法：浏览器「打印」→ 另存为 PDF 或直接打印 → 纸张 A4 纵向 → 边距选「无」→ 勾选「背景图形」。<br />
+    二维码已指向 <code>https://metbix.com/</code>。如果以后换网址，运行 <code>node generate-qr.js 新网址</code> 重新生成即可。
+  </p>
+
+  <div class="poster">
+    <div class="poster__head">
+      <span class="mono-label">周公子纸巾基金会 · FUND NO.001</span>
+      <span class="mono-label">账目全公开</span>
+    </div>
+
+    <h1>周公子请您<br /><em>上厕所</em>啦！</h1>
+    <p class="poster__sub">
+      本卫生间已率先实现「无纸化办公」。纸巾靠大家<b>自愿捐助</b>：<br />
+      支付宝扫码进小荷包 → 主理人电商下单 → 订单截图上墙 → 大家安心扯纸。<br />
+      不摊派、不众筹，捐不捐全凭心意；主理人收到的每一笔，都会变成公示的纸。
+    </p>
+
+    <div class="poster__qr">
+      <img src="assets/qr-site.svg" alt="扫码进入周公子纸巾基金会" />
+      <strong>扫码进小荷包 · 查看实时账本</strong>
+      <span>一块是心意 · 五块是一卷 · 二十是一提</span>
+    </div>
+
+    <div class="poster__amounts">
+      <span>¥1 · 畅快一次</span>
+      <span>¥5 · 一卷自由</span>
+      <span>¥20 · 一提安心</span>
+      <span>¥88 · 荣誉终身纸事</span>
+    </div>
+
+    <div class="poster__foot">
+      <p class="slogans">
+        <strong>扯纸请节约，捐纸请扫码。</strong><br />
+        专款专用，只买纸 · 全网电商比价 · 小票自己会说话
+      </p>
+      <svg class="poster__roll" viewBox="0 0 240 280" role="img" aria-label="基金会吉祥物：一卷有脸的厕纸">
+        <path class="roll__paper" d="M156 96 v106 l7 9 7 -11 7 11 7 -9 6 8 v-114 z" />
+        <path class="roll__paper" d="M40 78 v88 a80 28 0 0 0 160 0 v-88" />
+        <ellipse class="roll__paper" cx="120" cy="78" rx="80" ry="28" />
+        <ellipse class="roll__tube" cx="120" cy="78" rx="18" ry="7" />
+        <ellipse class="roll__eye" cx="95" cy="120" rx="5" ry="7" />
+        <ellipse class="roll__eye" cx="145" cy="120" rx="5" ry="7" />
+        <path class="roll__mouth" d="M104 142 Q120 154 136 142" />
+        <ellipse class="roll__blush" cx="80" cy="134" rx="9" ry="5" />
+        <ellipse class="roll__blush" cx="160" cy="134" rx="9" ry="5" />
+        <path class="roll__heart" d="M66 46 c-3.5 -7 -14 -4.5 -14 2.5 0 5.5 8 10 14 13.5 6 -3.5 14 -8 14 -13.5 0 -7 -10.5 -9.5 -14 -2.5 z" />
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

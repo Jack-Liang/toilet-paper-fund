@@ -1,0 +1,11 @@
+# 依赖与工具产物
+node_modules/
+.hallmark/
+
+# 本地验收截图等中间产物
+_shots/
+
+# 系统杂项
+*.log
+.DS_Store
+Thumbs.db
