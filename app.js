@@ -35,10 +35,9 @@
   const rows = [...L.entries].reverse().map((e) => {
     const li = document.createElement("li");
     if (e.kind === "in") {
-      const who = e.public ? e.name : "某某某";
       li.innerHTML =
         '<span class="date">' + e.date + "</span>" +
-        '<span class="what"><strong>' + who + "请您上厕所</strong>" +
+        '<span class="what"><strong>' + e.name + "请您上厕所</strong>" +
         '<span class="meta"><span>' + (e.note || "爱心不分大小") + "</span></span></span>" +
         '<span class="amt amt--in">+' + money(e.amount) + "</span>";
     } else {
@@ -74,7 +73,7 @@
   const wall = $("#wall-list");
   const donations = L.entries
     .filter((e) => e.kind === "in")
-    .map((e) => ({ amount: e.amount, who: e.public ? e.name : "某某某", date: e.date }))
+    .map((e) => ({ amount: e.amount, who: e.name, date: e.date }))
     .sort((a, b) => b.amount - a.amount || (a.date < b.date ? -1 : 1));
   if (!donations.length) {
     wall.outerHTML =
