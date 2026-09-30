@@ -361,7 +361,7 @@ em, .hl {
 .foot-marquee__track {
   display: flex; gap: var(--space-2xl);
   white-space: nowrap; padding-block: var(--space-md);
-  animation: foot-marquee 32s linear infinite;
+  animation: foot-marquee 16s linear infinite;
 }
 .foot-marquee__track span {
   font-family: var(--font-display); font-weight: 700;
