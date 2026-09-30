@@ -10,3 +10,6 @@ _shots/
 .DS_Store
 Thumbs.db
 .wrangler/
+
+# 小荷包真码不进仓库、不上公网（本地放真码用于打印海报）
+assets/qr-xiaohebao.png

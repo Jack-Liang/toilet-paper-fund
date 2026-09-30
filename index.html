@@ -80,8 +80,8 @@
           </li>
           <li>
             <span class="stage">02 · 随喜捐纸</span>
-            <h3>扫码进小荷包，金额随意。</h3>
-            <p>一块是心意，五块是一卷，二十是一提。完全自愿，不捐也照样安心扯纸——这是基金会的体面。</p>
+            <h3>进小荷包，金额随意。</h3>
+            <p>扫卫生间海报上的码，或找主理人拿邀请链接。一块是心意，五块是一卷，二十是一提。完全自愿，不捐也照样安心扯纸。</p>
           </li>
           <li>
             <span class="stage">03 · 主理人下单</span>
@@ -101,16 +101,18 @@
     <section id="donate" class="section">
       <header class="head-hang reveal">
         <h2>捐个纸</h2>
-        <p class="head-sub">自愿捐献，不搞摊派。用支付宝扫码加入「周公子纸巾基金会」小荷包，随喜一笔——主理人收到后统一买纸，订单截图全部公示。</p>
+        <p class="head-sub">自愿捐献，不搞摊派。加入「周公子纸巾基金会」小荷包随喜一笔——主理人收到后统一买纸，订单截图全部公示。</p>
       </header>
       <div class="donate-grid donate-grid--single">
         <article class="qr-card qr-card--alipay">
           <h3>支付宝 · 小荷包</h3>
-          <img class="qr-card__img" id="qr-xiaohebao" src="assets/qr-xiaohebao.png" alt="支付宝小荷包邀请二维码，扫码加入" width="220" height="220" />
-          <p class="qr-card__cap" data-real="支付宝扫一扫 · 加入小荷包随喜一笔；小荷包里的流水和这本账，互为对账">示意码 · 上线前请替换为小荷包邀请二维码</p>
+          <img class="qr-card__img" id="qr-xiaohebao" src="assets/qr-xiaohebao.png"
+               onerror="this.onerror=null;this.src='assets/qr-xiaohebao-demo.png'"
+               alt="小荷包邀请二维码（正式码只贴在卫生间海报上）" width="220" height="220" />
+          <p class="qr-card__cap">真码只贴在卫生间海报上，网页不放，防陌生人扫码入群。加入方式：扫海报上的码，或找主理人拿邀请链接。</p>
         </article>
       </div>
-      <p class="donate-promise">主理人承诺：收到的每一笔都变成纸。小荷包到账 → 电商下单 → 订单截图挂进下方账本，三步都留痕。</p>
+      <p class="donate-promise">主理人承诺：收到的每一笔都变成纸。小荷包到账 → 电商下单 → 订单截图挂进下方账本，三步都留痕。<br />账本默认只记钱、不记名；想在感谢榜露名，捐款时备注「上榜：称呼」。</p>
       <ul class="amounts" aria-label="捐款金额参考">
         <li>¥1 · 畅快一次</li>
         <li>¥5 · 一卷自由</li>
@@ -146,7 +148,7 @@
         <span class="sum"><span class="dot dot--balance" aria-hidden="true"></span>结余 <strong id="sum-balance">¥0.00</strong></span>
       </div>
       <ol class="ledger" id="ledger-rows"></ol>
-      <p class="ledger-note"><span id="ledger-updated"></span> · 捐款纯属自愿。想匿名？备注里写「匿名」即可。</p>
+      <p class="ledger-note"><span id="ledger-updated"></span> · 账本默认匿名，只记钱不记名。想上榜？捐款备注「上榜：称呼」。</p>
       <p class="aside-deadpan">问：为什么用小荷包？答：进账有流水，买纸有订单，两本账对不上的时候，一定是纸先出的问题。</p>
     </section>
 
@@ -155,7 +157,7 @@
       <div class="section__inner">
         <header class="head-hang reveal">
           <h2>感谢榜</h2>
-          <p class="head-sub">无论多少，名单就在这里，按累计金额排序。</p>
+          <p class="head-sub">默认只记钱、不记名——匿名爱心合并成一行。想在榜上露名的同事，捐款备注「上榜：称呼」即可。</p>
         </header>
         <ul id="wall-list"></ul>
       </div>

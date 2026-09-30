@@ -9,12 +9,15 @@
 
   const money = (n) => "¥" + fmtMoney.format(n);
 
-  // ——— 汇总 ———
-  let totalIn = 0, totalOut = 0, rollsBought = 0, donors = new Map();
+  // ——— 汇总（隐私默认匿名：只有 public: true 的捐款人上榜）———
+  let totalIn = 0, totalOut = 0, rollsBought = 0;
+  const donors = new Map();          // 愿意露名的：称呼 → 累计
+  let anonCount = 0, anonSum = 0;    // 匿名：笔数、金额合计
   for (const e of L.entries) {
     if (e.kind === "in") {
       totalIn += e.amount;
-      donors.set(e.name, (donors.get(e.name) || 0) + e.amount);
+      if (e.public) donors.set(e.name, (donors.get(e.name) || 0) + e.amount);
+      else { anonCount += 1; anonSum += e.amount; }
     } else {
       totalOut += e.amount;
       rollsBought += e.rolls || 0;
@@ -35,9 +38,10 @@
   const rows = [...L.entries].reverse().map((e) => {
     const li = document.createElement("li");
     if (e.kind === "in") {
+      const who = e.public ? e.name : "一位同事";
       li.innerHTML =
         '<span class="date">' + e.date + "</span>" +
-        '<span class="what"><strong>' + e.name + " 捐了纸钱</strong>" +
+        '<span class="what"><strong>' + who + "捐了纸钱</strong>" +
         '<span class="meta"><span>' + (e.note || "爱心不分大小") + "</span></span></span>" +
         '<span class="amt amt--in">+' + money(e.amount) + "</span>";
     } else {
@@ -78,9 +82,13 @@
     $("#qr-xiaohebao").src = L.donate.xiaohebao;
   }
 
-  // ——— 感谢榜 ———
+  // ——— 感谢榜（默认匿名：匿名同事合并为一行）———
   const wall = $("#wall-list");
   const ranked = [...donors.entries()].sort((a, b) => b[1] - a[1]);
+  if (anonCount > 0) {
+    ranked.push(["匿名爱心同事 ×" + anonCount, anonSum]);
+    ranked.sort((a, b) => b[1] - a[1]);
+  }
   if (!ranked.length) {
     wall.outerHTML =
       '<p class="wall-empty">榜上还空着。<br>第一位捐纸的人会被永远记住（至少到这卷纸用完）。<br><a href="#donate">去捐个纸 →</a></p>';
@@ -91,16 +99,10 @@
   }
 
   // ——— 演示模式提示 ———
-  document.querySelectorAll(".qr-card__cap").forEach((el) => {
-    if (L.demo) {
-      el.classList.add("is-demo"); // 保持「示意码」文案与珊瑚色警示
-    } else {
-      el.textContent = el.dataset.real || ""; // 正式模式：换成真实使用指引
-    }
-  });
   if (L.demo) {
     document.body.classList.add("is-demo");
     $("#demo-banner").hidden = false;
+    document.querySelectorAll(".qr-card__cap").forEach((el) => el.classList.add("is-demo"));
   }
 
   // ——— 大数字滚动（Hum 签名动作） ———

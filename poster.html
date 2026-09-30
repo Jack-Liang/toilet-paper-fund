@@ -50,9 +50,11 @@
       padding: 8mm 12mm; border: 2px solid var(--color-ink); border-radius: 8mm;
       background: color-mix(in oklch, var(--color-accent) 14%, var(--color-paper));
     }
-    .poster__qr img { width: 62mm; height: 62mm; }
-    .poster__qr strong { font-family: var(--font-display); font-size: 6mm; font-weight: 700; }
-    .poster__qr span { font-family: var(--font-mono); font-size: 3.6mm; color: var(--color-ink-2); }
+    .poster__qr-row { display: flex; gap: 10mm; align-items: start; }
+    .poster__qr-item { margin: 0; display: grid; justify-items: center; gap: 3mm; }
+    .poster__qr-item img { width: 52mm; height: 52mm; background: var(--color-qr-bg); padding: 3mm; border-radius: 3mm; }
+    .poster__qr-item figcaption strong { font-family: var(--font-display); font-size: 4.6mm; font-weight: 700; }
+    .poster__qr > span { font-family: var(--font-mono); font-size: 3.6mm; color: var(--color-ink-2); }
     .poster__amounts { display: flex; flex-wrap: wrap; gap: 2.5mm; margin-top: 9mm; justify-content: center; }
     .poster__amounts span {
       font-family: var(--font-mono); font-size: 3.8mm;
@@ -102,8 +104,16 @@
     </p>
 
     <div class="poster__qr">
-      <img src="assets/qr-site.svg" alt="扫码进入周公子纸巾基金会" />
-      <strong>扫码进小荷包 · 查看实时账本</strong>
+      <div class="poster__qr-row">
+        <figure class="poster__qr-item">
+          <img src="assets/qr-xiaohebao.png" onerror="this.onerror=null;this.src='assets/qr-xiaohebao-demo.png'" alt="小荷包邀请码" />
+          <figcaption><strong>扫码进小荷包 · 随喜捐纸</strong></figcaption>
+        </figure>
+        <figure class="poster__qr-item">
+          <img src="assets/qr-site.svg" alt="账本二维码" />
+          <figcaption><strong>扫码看实时账本</strong></figcaption>
+        </figure>
+      </div>
       <span>一块是心意 · 五块是一卷 · 二十是一提</span>
     </div>
 
