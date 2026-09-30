@@ -9,15 +9,12 @@
 
   const money = (n) => "¥" + fmtMoney.format(n);
 
-  // ——— 汇总（隐私默认匿名：只有 public: true 的捐款人上榜）———
-  let totalIn = 0, totalOut = 0, rollsBought = 0;
-  const donors = new Map();          // 愿意露名的：称呼 → 累计
-  let anonCount = 0, anonSum = 0;    // 匿名：笔数、金额合计
+  // ——— 汇总 ———
+  let totalIn = 0, totalOut = 0, rollsBought = 0, donationCount = 0;
   for (const e of L.entries) {
     if (e.kind === "in") {
       totalIn += e.amount;
-      if (e.public) donors.set(e.name, (donors.get(e.name) || 0) + e.amount);
-      else { anonCount += 1; anonSum += e.amount; }
+      donationCount += 1;
     } else {
       totalOut += e.amount;
       rollsBought += e.rolls || 0;
@@ -29,7 +26,7 @@
   // ——— 英雄区数字 ———
   $("#stat-rolls").textContent = fmtInt.format(rollsBought);
   $("#stat-in").textContent = money(totalIn);
-  $("#stat-donors").textContent = fmtInt.format(donors.size) + " 笔";
+  $("#stat-donors").textContent = fmtInt.format(donationCount) + " 笔";
   $("#stat-stock").textContent = fmtInt.format(L.stockRolls || 0) + " 卷";
   $("#stat-days").textContent = daysLeft === null ? "—" : "约 " + daysLeft + " 天";
 
@@ -46,12 +43,8 @@
         '<span class="amt amt--in">+' + money(e.amount) + "</span>";
     } else {
       const shopName = e.shop || "";
-      const linkText = shopName.includes("京东") ? "去京东看单"
-        : /淘宝|天猫/.test(shopName) ? "去淘宝看单"
-        : shopName.includes("拼多多") ? "去拼多多看单"
-        : "查看链接";
       const link = e.link
-        ? '<a href="' + e.link + '" target="_blank" rel="noopener">' + linkText + " →</a>"
+        ? '<a href="' + e.link + '" target="_blank" rel="noopener">查看订单 →</a>'
         : "";
       const proof = e.proof
         ? '<a href="' + e.proof + '" target="_blank" rel="noopener">订单截图</a>'
@@ -77,29 +70,22 @@
   $("#sum-balance").textContent = money(balance);
   $("#ledger-updated").textContent = "更新于 " + (L.updatedAt || "—") + " · 结余以实付为准";
 
-  // ——— 收款码（支付宝小荷包）：线上无真码文件时自动回退示意码 ———
-  if (L.donate) {
-    const img = $("#qr-xiaohebao");
-    const fallback = () => { img.src = "assets/qr-xiaohebao-demo.png"; };
-    img.addEventListener("error", fallback, { once: true });
-    img.src = L.donate.xiaohebao;
-    // 404 可能早于本脚本执行就发生了：失败状态直接可查，不依赖事件时序
-    if (img.complete && img.naturalWidth === 0) fallback();
-  }
-
-  // ——— 感谢榜（默认匿名：匿名同事合并为一行）———
+  // ——— 感谢榜（排行榜：按单笔捐款金额排名；默认匿名）———
   const wall = $("#wall-list");
-  const ranked = [...donors.entries()].sort((a, b) => b[1] - a[1]);
-  if (anonCount > 0) {
-    ranked.push(["匿名爱心同事 ×" + anonCount, anonSum]);
-    ranked.sort((a, b) => b[1] - a[1]);
-  }
-  if (!ranked.length) {
+  const donations = L.entries
+    .filter((e) => e.kind === "in")
+    .map((e) => ({ amount: e.amount, who: e.public ? e.name : "一位同事", date: e.date }))
+    .sort((a, b) => b.amount - a.amount || (a.date < b.date ? -1 : 1));
+  if (!donations.length) {
     wall.outerHTML =
       '<p class="wall-empty">榜上还空着。<br>第一位捐纸的人会被永远记住（至少到这卷纸用完）。<br><a href="#donate">去捐个纸 →</a></p>';
   } else {
-    wall.innerHTML = ranked
-      .map(([name, amt]) => '<li><span class="who">' + name + "</span><span class=\"howmuch\">累计 " + money(amt) + "</span></li>")
+    wall.innerHTML = donations
+      .map((d, i) =>
+        '<li><span class="rank' + (i < 3 ? " rank--top" : "") + '">No.' + (i + 1) + "</span>" +
+        '<span class="who">' + d.who + '</span>' +
+        '<span class="howmuch">' + money(d.amount) + "</span></li>"
+      )
       .join("");
   }
 
@@ -107,7 +93,6 @@
   if (L.demo) {
     document.body.classList.add("is-demo");
     $("#demo-banner").hidden = false;
-    document.querySelectorAll(".qr-card__cap").forEach((el) => el.classList.add("is-demo"));
   }
 
   // ——— 大数字滚动（Hum 签名动作） ———

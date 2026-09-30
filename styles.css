@@ -239,6 +239,9 @@ em, .hl {
 .qr-card--wechat:hover { background: color-mix(in oklch, var(--color-accent) 13%, var(--color-paper)); }
 .qr-card--alipay:hover { background: color-mix(in oklch, var(--color-accent-2) 15%, var(--color-paper)); }
 .qr-card h3 { font-size: var(--text-md); font-weight: 600; margin: 0; }
+.qr-card p { color: var(--color-ink-2); font-size: var(--text-sm); line-height: 1.7; }
+.qr-card p b, .qr-card p strong { color: var(--color-ink); }
+.qr-card .join-alt { margin-top: var(--space-2xs); }
 .qr-card__img {
   width: min(220px, 100%);
   border-radius: var(--radius-input);
@@ -314,23 +317,25 @@ em, .hl {
   max-width: 52ch;
 }
 
-/* ————— T2 感谢榜：发丝线墙 ————— */
-.wall ul {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  border-top: 2px solid var(--color-ink);
-  border-left: 1px solid var(--color-rule);
-}
-.wall li {
-  padding: var(--space-md);
-  border-right: 1px solid var(--color-rule);
+/* ————— T2 感谢榜：排行榜 ————— */
+.wall-rank { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--color-ink); }
+.wall-rank li {
+  display: flex; align-items: baseline; gap: var(--space-md);
+  padding: var(--space-md) var(--space-xs);
   border-bottom: 1px solid var(--color-rule);
-  display: grid; gap: var(--space-3xs); align-content: start;
   transition: background-color var(--dur-short) var(--ease-out);
 }
-.wall li:hover { background: color-mix(in oklch, var(--color-accent-2) 10%, transparent); }
-.wall .who { font-weight: 600; }
-.wall .howmuch { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-ink-2); }
+.wall-rank li:hover { background: color-mix(in oklch, var(--color-accent-2) 10%, transparent); }
+.wall-rank .rank {
+  font-family: var(--font-mono); font-size: var(--text-sm);
+  color: var(--color-ink-2); min-width: 3.2em;
+}
+.wall-rank .rank--top { color: var(--color-accent-3-deep); font-weight: 500; }
+.wall-rank .who { font-weight: 600; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.wall-rank .howmuch {
+  font-family: var(--font-mono); font-size: var(--text-sm);
+  color: var(--color-ink-2); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
 .wall-empty { color: var(--color-ink-2); }
 .wall-empty a { font-weight: 600; text-underline-offset: 3px; }
 

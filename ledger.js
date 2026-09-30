@@ -29,11 +29,6 @@ window.PAPER_LEDGER = {
   // 消耗速度估算（卷/天）：用于「还能撑几天」，拍脑袋即可，改到大致准就行
   burnRatePerDay: 0.5,
 
-  // 支付宝小荷包邀请码图片路径：替换 assets/qr-xiaohebao.png 即可，这里不用动
-  donate: {
-    xiaohebao: "assets/qr-xiaohebao.png",
-  },
-
   // 流水（示例数据，正式启用前删除或改成真实账目）
   entries: [
     // public: true 表示本人愿意上榜露名；不写或 false = 页面显示「一位同事」

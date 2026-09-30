@@ -101,13 +101,14 @@
     <section id="donate" class="section">
       <header class="head-hang reveal">
         <h2>捐个纸</h2>
-        <p class="head-sub">自愿捐献，不搞摊派。加入「周公子纸巾基金会」小荷包随喜一笔——主理人收到后统一买纸，订单截图全部公示。</p>
+        <p class="head-sub">自愿捐献，不搞摊派。小荷包的码不在网页上——就在卫生间海报上，出门左转就能扫。</p>
       </header>
       <div class="donate-grid donate-grid--single">
-        <article class="qr-card qr-card--alipay">
-          <h3>支付宝 · 小荷包</h3>
-          <img class="qr-card__img" id="qr-xiaohebao" alt="小荷包二维码（正式码只贴在卫生间海报上，线上显示示意码）" width="220" height="220" />
-          <p class="qr-card__cap">真码只贴在卫生间海报上，网页不放，防陌生人扫码入群。加入方式：扫海报上的码，或找主理人拿邀请链接。</p>
+        <article class="qr-card qr-card--wechat">
+          <h3>去哪儿扫？</h3>
+          <p>卫生间墙上的海报——就是那张<b>「周公子请您上厕所啦！」</b>。<b>左边的码</b>是「“纸”富基金」小荷包，支付宝扫它，随喜一笔。</p>
+          <p class="join-alt">不方便跑一趟？直接找主理人拿邀请链接，效果一样。</p>
+          <p class="qr-card__cap">码不上网页：防陌生人扫码，也防码被转发到公司以外。</p>
         </article>
       </div>
       <p class="donate-promise">主理人承诺：收到的每一笔都变成纸。小荷包到账 → 电商下单 → 订单截图挂进下方账本，三步都留痕。<br />账本默认只记钱、不记名；想在感谢榜露名，捐款时备注「上榜：称呼」。</p>
@@ -123,7 +124,7 @@
     <section id="ledger" class="section">
       <header class="head-hang reveal">
         <h2>账本公示</h2>
-        <p class="head-sub">每一笔进出的钱，都在这里。支出条目点「去京东看单」等链接，直接唤起下单的 App。</p>
+        <p class="head-sub">每一笔进出的钱，都在这里。分享过订单链接的支出，点「查看订单」直接唤起下单的 App。</p>
       </header>
       <p class="demo-banner" id="demo-banner" hidden>示例数据 · 正式启用前请在 ledger.js 录入真实账目，并把 demo 改为 false</p>
       <ol class="pledges">
@@ -155,9 +156,9 @@
       <div class="section__inner">
         <header class="head-hang reveal">
           <h2>感谢榜</h2>
-          <p class="head-sub">默认只记钱、不记名——匿名爱心合并成一行。想在榜上露名的同事，捐款备注「上榜：称呼」即可。</p>
+          <p class="head-sub">按单笔捐款金额排名，每一笔善举都单独记一次。默认匿名，想在榜上露名，捐款备注「上榜：称呼」即可。</p>
         </header>
-        <ul id="wall-list"></ul>
+        <ol class="wall-rank" id="wall-list"></ol>
       </div>
     </section>
   </main>
