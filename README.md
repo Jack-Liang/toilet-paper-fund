@@ -20,15 +20,21 @@
 | `generate-qr.js` | 二维码生成脚本（换网址时用） |
 | `proof/`（自建） | 放电商订单截图，路径填进 `ledger.js` 的 `proof` 字段 |
 
-## 部署（Cloudflare Pages）
+## 部署（Cloudflare Pages · 关联 GitHub，push 即部署）
 
-已经部署在 https://metbix.com/ 。以后更新内容只需三步：
+仓库推到 GitHub 后，在 Cloudflare 关联一次即可实现自动部署：
 
-1. 改本地文件（通常是 `ledger.js` 记账）
-2. 到 Cloudflare 控制台 → **Workers & Pages** → 你的项目 → **Create new deployment**，把整个文件夹拖进去
-3. 等几十秒，https://metbix.com/ 自动更新
+1. **首次关联**：Cloudflare 控制台 → Workers & Pages → Create → Pages → Connect to Git → 选本仓库
+   - Framework preset：**None**（纯静态，无构建）
+   - Build command：**留空**
+   - Build output directory：**/**（仓库根就是站点根）
+2. **日常更新**：改 `ledger.js` 记账 → 提交推送 → 约几十秒后 https://metbix.com/ 自动更新
 
-命令行党也可以：`npx wrangler pages deploy . --project-name=你的项目名`
+```bash
+git add -A
+git commit -m "记账：xx月xx日"
+git push
+```
 
 > 注意：Cloudflare Pages 对中文文件名偶尔不友好，订单截图命名用英文/数字（`proof/jd-0926.jpg`）。
 
