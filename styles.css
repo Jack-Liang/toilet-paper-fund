@@ -334,6 +334,23 @@ em, .hl {
 .wall-empty { color: var(--color-ink-2); }
 .wall-empty a { font-weight: 600; text-underline-offset: 3px; }
 
+/* ————— 主理人署名 ————— */
+.site-sign {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: var(--space-lg) var(--page-gutter) 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-2);
+}
+.site-sign a {
+  font-weight: 500;
+  color: var(--color-accent-2-deep);
+  text-underline-offset: 3px;
+}
+.site-sign a:hover { color: var(--color-ink); }
+
 /* ————— Ft8 跑马灯页脚 ————— */
 .foot-marquee { overflow: hidden; border-top: 2px solid var(--color-ink); margin-top: var(--space-2xl); }
 .foot-marquee__track {

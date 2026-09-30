@@ -4,6 +4,7 @@
 **自愿捐献、不搞摊派**：捐不捐全凭心意，没捐的人照样用纸。收款走**支付宝小荷包**（自带流水，和网站账本互为对账），主理人收到后统一买纸并公示。一个**零后端**的静态页面，账本就是一个 JS 文件。
 
 - 线上地址：**https://metbix.com/**（Cloudflare Pages）
+- 主理人：**jack-liang**（[jack-liang.com](https://jack-liang.com)）
 - 本地预览：文件夹里起任意静态服务器（如 `npx http-server -p 8341 -c-1`）
 
 ## 文件结构
