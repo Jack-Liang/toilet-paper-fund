@@ -1,0 +1,14 @@
+# Workers 静态资产上传排除清单（语法同 .gitignore）
+# 站点文件：index.html / poster.html / styles.css / tokens.css / app.js / ledger.js / assets/
+node_modules
+.hallmark
+_shots
+.wrangler
+.git
+.gitignore
+.assetsignore
+README.md
+package.json
+package-lock.json
+generate-qr.js
+wrangler.jsonc

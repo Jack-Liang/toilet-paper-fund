@@ -9,3 +9,4 @@ _shots/
 *.log
 .DS_Store
 Thumbs.db
+.wrangler/

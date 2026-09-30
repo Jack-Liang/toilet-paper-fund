@@ -21,23 +21,22 @@
 | `generate-qr.js` | 二维码生成脚本（换网址时用） |
 | `proof/`（自建） | 放电商订单截图，路径填进 `ledger.js` 的 `proof` 字段 |
 
-## 部署（Cloudflare Pages · 关联 GitHub，push 即部署）
+## 部署（Cloudflare Workers · 静态资产）
 
-仓库推到 GitHub 后，在 Cloudflare 关联一次即可实现自动部署：
-
-1. **首次关联**：Cloudflare 控制台 → Workers & Pages → Create → Pages → Connect to Git → 选本仓库
-   - Framework preset：**None**（纯静态，无构建）
-   - Build command：**留空**
-   - Build output directory：**/**（仓库根就是站点根）
-2. **日常更新**：改 `ledger.js` 记账 → 提交推送 → 约几十秒后 https://metbix.com/ 自动更新
+配置已就绪（`wrangler.jsonc`），仓库根就是站点根，纯静态无需构建：
 
 ```bash
-git add -A
-git commit -m "记账：xx月xx日"
-git push
+npx wrangler login     # 首次：浏览器授权登录 Cloudflare（只需一次）
+npx wrangler deploy    # 部署：上传资产并绑定 metbix.com
 ```
 
-> 注意：Cloudflare Pages 对中文文件名偶尔不友好，订单截图命名用英文/数字（`proof/jd-0926.jpg`）。
+- 本地预览：`npx wrangler dev`（前台运行，Ctrl+C 干净退出）
+- **自定义域**：配置里已绑定 `metbix.com`（custom_domain）。前提是 metbix.com 的 DNS 托管在同一个 Cloudflare 账户；如果 deploy 报 zone 错误，删掉 `wrangler.jsonc` 里的 `routes` 字段先部署到 `*.workers.dev`，再到控制台 Workers & Pages → 本项目 → Settings → Domains & Routes 手动绑定。
+- 非站点文件（`node_modules`、`README.md`、脚本等）已通过 `.assetsignore` 排除，不会上传。
+
+日常更新：改 `ledger.js` 记账 → `git push`（GitHub 关联自动部署）或再跑一次 `npx wrangler deploy`。
+
+> 注意：订单截图命名用英文/数字（`proof/jd-0926.jpg`），避开中文文件名兼容问题。
 
 ## 配置小荷包码（上线前必做）
 

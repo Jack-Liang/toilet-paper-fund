@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 · 这一页被扯走了</title>
+  <style>
+    @import url("/tokens.css");
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: clip; }
+    body {
+      margin: 0; min-height: 100dvh;
+      display: grid; place-items: center;
+      background: var(--color-paper);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      text-align: center;
+      padding: var(--space-xl) var(--page-gutter);
+    }
+    .code {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(6rem, 24vw, 11rem); line-height: 0.9;
+      letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+      background-image: linear-gradient(var(--hl-coral) 0 0);
+      background-repeat: no-repeat; background-size: 100% 0.14em; background-position: 0 88%;
+    }
+    h1 { font-size: var(--text-2xl); font-weight: 600; margin: var(--space-lg) 0 var(--space-sm); letter-spacing: -0.02em; }
+    p { color: var(--color-ink-2); max-width: 34ch; margin: 0 auto; }
+    a.btn {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      margin-top: var(--space-xl); padding: 0.8rem 1.4rem;
+      font-family: var(--font-display); font-weight: 600; text-decoration: none;
+      white-space: nowrap; color: var(--color-ink); background: var(--color-accent);
+      border-radius: var(--radius-pill); cursor: pointer;
+      box-shadow: 0 4px 0 0 var(--color-accent-deep), 0 6px 12px -3px oklch(76% 0.2 95 / 0.45);
+      transition: transform 140ms cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 140ms cubic-bezier(0.2, 0.7, 0.3, 1);
+    }
+    a.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 0 var(--color-accent-deep), 0 12px 22px -4px oklch(76% 0.2 95 / 0.45); }
+    a.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 0 var(--color-accent-deep); }
+    .foot { margin-top: var(--space-2xl); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--color-ink-2); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="code">404</p>
+    <h1>这一页被扯走了。</h1>
+    <p>可能是你扯得太用力，也可能是它本来就没了。账本还在，别担心。</p>
+    <a class="btn" href="/">回主页查账本</a>
+    <p class="foot">周公子纸巾基金会 · 主理人 jack-liang</p>
+  </main>
+</body>
+</html>

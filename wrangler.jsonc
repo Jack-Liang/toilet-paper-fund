@@ -1,0 +1,16 @@
+// Cloudflare Workers 静态资产部署配置
+// 部署：npx wrangler login  →  npx wrangler deploy
+{
+  "name": "toilet-paper-fund",
+  "compatibility_date": "2026-09-30",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    // 自定义域：要求 metbix.com 的 DNS zone 在同一个 Cloudflare 账户里。
+    // 如果部署时报 zone 相关错误，先删掉整个 routes 字段跑通 workers.dev，
+    // 再到控制台 Workers & Pages → 本项目 → Settings → Domains & Routes 绑定。
+    { "pattern": "metbix.com", "custom_domain": true }
+  ]
+}
