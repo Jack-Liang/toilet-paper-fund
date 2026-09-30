@@ -12,3 +12,5 @@ package.json
 package-lock.json
 generate-qr.js
 wrangler.jsonc
+# 小荷包真码绝不上线：网页引用它失败时会自动回退显示示意码
+assets/qr-xiaohebao.png

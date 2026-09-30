@@ -77,9 +77,14 @@
   $("#sum-balance").textContent = money(balance);
   $("#ledger-updated").textContent = "更新于 " + (L.updatedAt || "—") + " · 结余以实付为准";
 
-  // ——— 收款码（支付宝小荷包）———
+  // ——— 收款码（支付宝小荷包）：线上无真码文件时自动回退示意码 ———
   if (L.donate) {
-    $("#qr-xiaohebao").src = L.donate.xiaohebao;
+    const img = $("#qr-xiaohebao");
+    const fallback = () => { img.src = "assets/qr-xiaohebao-demo.png"; };
+    img.addEventListener("error", fallback, { once: true });
+    img.src = L.donate.xiaohebao;
+    // 404 可能早于本脚本执行就发生了：失败状态直接可查，不依赖事件时序
+    if (img.complete && img.naturalWidth === 0) fallback();
   }
 
   // ——— 感谢榜（默认匿名：匿名同事合并为一行）———
